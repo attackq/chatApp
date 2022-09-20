@@ -1,3 +1,21 @@
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media screen and (max-width: 1200px) {
+        @content;
+    }
+}
+
 p {
     padding: 0;
     margin: 0;
@@ -93,9 +111,15 @@ p {
         display: flex;
         overflow: hidden;
 
+        @include tablet {
+            width: 90%;
+        }
+
         .sidebar {
+            position: relative;
             flex: 1;
             background-color: #515f8d;
+
 
             .navbar {
                 display: flex;
@@ -108,6 +132,10 @@ p {
 
                 .logo {
                     font-weight: bold;
+
+                    @include tablet {
+                        display: none;
+                    }
                 }
 
                 .user {
@@ -131,6 +159,11 @@ p {
                     border: none;
                     cursor: pointer;
                     padding: 5px;
+
+                    @include tablet {
+                        position: absolute;
+                        bottom: 10px;
+                    }
                 }
             }
 
@@ -148,6 +181,10 @@ p {
                         color: white;
                         outline: none;
 
+                        @include mobile {
+                            max-width: 80px;
+                        }
+
                         &::placeholder {
                             color: lightgray;
                         }
@@ -162,6 +199,10 @@ p {
                 color: white;
                 gap: 10px;
                 cursor: pointer;
+
+                @include mobile {
+                    justify-content: center;
+                }
 
                 &:hover {
                     background-color: #484c81;
@@ -184,6 +225,10 @@ p {
                         margin-top: 5px;
                         font-size: 14px;
                         color: lightgray;
+                    }
+
+                    @include mobile {
+                        display: none;
                     }
                 }
             }
